@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Build Go Web App') {
             steps {
-                sh 'go mod init wordsmith-web2'
+                //sh 'go mod init wordsmith-web2'
                 sh 'go build -o main ./' // Adjust command and output file
             }
         } 
