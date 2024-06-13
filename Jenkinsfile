@@ -18,7 +18,7 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                  
                   sh 'docker login -u $USERNAME -p $PASSWORD'
-                  sh 'docker build -t word-web:latest -f Dockerfile'
+                  sh 'docker build -t word-web:latest -f Dockerfile .'
                   sh 'docker tag word-web:latest tendomo/word-web:${BUILD_NUMBER}'
                   sh 'docker push tendomo/word-web:${BUILD_NUMBER}'
                                   
