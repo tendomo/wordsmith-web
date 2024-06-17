@@ -7,7 +7,7 @@ WORKDIR /app
 # Copy the application code
 COPY . .
 
-RUN apk add --no-cache golang1.21.0
+RUN apk add --no-cache golang1.17
 
 # Install dependencies
 RUN go mod download
