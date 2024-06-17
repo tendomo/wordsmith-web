@@ -7,7 +7,7 @@ WORKDIR /app
 # Copy the application code
 COPY . .
 
-RUN apt-get update && apt-get install -y golang-go1.22.4  # Replace 1.23 with desired version
+RUN apk add --no-cache golang1.22.4
 
 # Install dependencies
 RUN go mod download
