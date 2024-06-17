@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        Go 'go 1.23' // Adjust based on your Go version
+        Go 'go 1.23.11' // Adjust based on your Go version
        
     }
 
