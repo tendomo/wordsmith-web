@@ -1,5 +1,5 @@
 # Use a slim alpine image with Golang pre-installed
-FROM golang:1.23-alpine AS builder
+FROM golang:1.21-alpine AS builder
 
 # Set working directory
 WORKDIR /app
@@ -7,7 +7,7 @@ WORKDIR /app
 # Copy the application code
 COPY . .
 
-RUN apk add --no-cache golang1.23
+RUN apk add --no-cache golang1.21.0
 
 # Install dependencies
 RUN go mod download
