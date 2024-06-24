@@ -1,31 +1,18 @@
-# Use a slim alpine image with Golang pre-installed
-FROM golang:1.19.2-alpine AS builder
+FROM golang:alpine as builder
+WORKDIR /usr/local/app
 
-# Set working directory
-WORKDIR /app
+COPY dispatcher.go .
 
-# Copy the application code
-COPY . .
+# build for the target arch not the build platform host arch
+RUN go build dispatcher.go
 
-RUN apk add --no-cache golang1.17
-
-# Install dependencies
-RUN go mod download
-
-# Build the application (replace main.go with your actual entrypoint)
-RUN go build -o main ./
-
-# Use a smaller alpine image for the final image
+# RUN
+# defaults to using the target arch image
 FROM alpine:latest
+WORKDIR /usr/local/app
 
-# Copy the built binary
-COPY --from=builder /app/main /app/main
+COPY --from=builder /usr/local/app/dispatcher ./
+COPY static ./static/
 
-# Set the working directory
-WORKDIR /app
-
-# Expose port 8080 (you can change this to your desired port)
-EXPOSE 8080
-
-# Run the application on startup
-CMD ["./main"]
+EXPOSE 80
+CMD ["/usr/local/app/dispatcher"]
