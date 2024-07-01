@@ -1,10 +1,24 @@
 pipeline {
     agent any
+    environment {
+        CI = false
+    }
+    stages {
+        stage('sonar analysis') {
+            environment {
+                scannerHome = tool 'SonarQube-Scanner'
+            }
+            steps {
+                withsonarQubeScannerEnv('SonarQube-Scanner')
+            }
+        }
+    
+
     tools {
         go 'Go' // Adjust based on your Go version 
     }
 
-    stages {
+    
         stage('Build Go Web App') {
             steps {
                 //sh 'go mod init wordsmith-web2'
