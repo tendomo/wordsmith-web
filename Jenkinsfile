@@ -14,9 +14,9 @@ pipeline {
         }
     
 
-    tools {
-        go 'Go' // Adjust based on your Go version 
-    }
+            tools {
+                go 'Go' // Adjust based on your Go version 
+            }
 
     
         stage('Build Go Web App') {
