@@ -13,7 +13,7 @@ pipeline {
             }
         }
     
-
+        stage('test')
             tools {
                 go 'Go' // Adjust based on your Go version 
             }
