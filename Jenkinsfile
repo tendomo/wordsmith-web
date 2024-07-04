@@ -13,11 +13,11 @@ pipeline {
             }
         }
     
-        stage('test')
+        stage('test') {
             tools {
                 go 'Go' // Adjust based on your Go version 
             }
-
+        }
     
         stage('Build Go Web App') {
             steps {
