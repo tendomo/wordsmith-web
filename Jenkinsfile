@@ -14,7 +14,7 @@ pipeline {
         }
     
         stage('test') {
-            tools {
+            steps {
                 go 'Go' // Adjust based on your Go version 
             }
         }
