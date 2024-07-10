@@ -9,7 +9,7 @@ pipeline {
                 scannerHome = tool 'SonarQube-Scanner'
             }
             steps {
-                withsonarQubeEnv('SonarQube-Scanner')
+                withSonarQubeEnv('SonarQube-Scanner')
             }
         }
     
