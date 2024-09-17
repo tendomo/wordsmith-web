@@ -3,15 +3,17 @@ pipeline {
     environment {
         CI = false
     }
-    stages {
-        stage('sonar analysis') {
+    stage ('sonarqube analysis'){
             environment {
-                scannerHome = tool 'SonarQube-Scanner'
+                scannerHome = tool "sonarscanner"
             }
-            steps {
-                withSonarQubeEnv('SonarQube-Scanner')
+            steps{
+                withSonarQubeEnv('sonarscanner') {
+                  sh "${scannerHome}/bin/sonar-scanner"
+                }    
             }
-        }
+
+        
     
        // stage('test') {
            // steps {
