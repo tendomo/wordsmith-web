@@ -3,7 +3,8 @@ pipeline {
     environment {
         CI = false
     }
-    stage ('sonarqube analysis'){
+     stages {
+        stage ('sonarqube analysis'){
             environment {
                 scannerHome = tool "sonarscanner"
             }
@@ -12,6 +13,7 @@ pipeline {
                   sh "${scannerHome}/bin/sonar-scanner"
                 }    
             }
+        }
 
         
     
