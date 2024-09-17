@@ -1,8 +1,6 @@
 pipeline {
     agent any
-    environment {
-        CI = false
-    }
+   
      stages {
         stage ('sonarqube analysis'){
             environment {
